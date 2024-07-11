@@ -1,10 +1,11 @@
 import Salas from "./Salas";
+import SearchBar from "./SearchBar";
 
 function SalasDisponiveis() {
   return (
     <div className="bg-yellow-400">
       <div className="flex">
-        <div className="w-full">search bar</div>
+        <SearchBar />
         <div>config</div>
       </div>
       <div className="">
