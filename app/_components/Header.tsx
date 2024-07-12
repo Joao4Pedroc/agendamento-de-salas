@@ -10,7 +10,7 @@ function Header() {
         height={100}
         alt="fepecs logo"
       />
-      <div className="pr-10 flex mt-5">
+      <div className="pr-10 flex mt-5 gap-5">
         <span className="pr-5 font-bold">login</span>
         <HiMiniUser className="w-7 h-7" />
       </div>
