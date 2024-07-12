@@ -23,7 +23,14 @@ export default function Home() {
         </div>
       </div>
       <SalasDisponiveis />
-      <Carousel showArrows={true} className="w-[30rem]">
+      <Carousel
+        showArrows
+        autoPlay
+        stopOnHover
+        infiniteLoop
+        centerMode
+        className="w-[30rem]"
+      >
         <div>
           <Image
             src="/logo_fepecs.png"
