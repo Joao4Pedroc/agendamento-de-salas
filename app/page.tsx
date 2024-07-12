@@ -1,4 +1,10 @@
+"use client";
+
 import SalasDisponiveis from "./_components/SalasDisponiveis";
+import Image from "next/image";
+
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
   return (
@@ -17,7 +23,36 @@ export default function Home() {
         </div>
       </div>
       <SalasDisponiveis />
-      <span className="bg-red-500">carousel</span>
+      <Carousel showArrows={true} className="w-[30rem]">
+        <div>
+          <Image
+            src="/logo_fepecs.png"
+            width={500}
+            height={500}
+            alt="fepecs logo"
+          />
+          <p>Sala 1</p>
+        </div>
+        <div>
+          <Image
+            src="/logo_fepecs.png"
+            width={500}
+            height={500}
+            alt="fepecs logo"
+          />
+          <p>Sala 2</p>
+        </div>
+        <div>
+          <Image
+            src="/logo_fepecs.png"
+            width={500}
+            height={500}
+            alt="fepecs logo"
+          />
+          <p>Sala 3</p>
+        </div>
+      </Carousel>
+      {/* <span className="bg-red-500">carousel</span> */}
     </div>
   );
 }
