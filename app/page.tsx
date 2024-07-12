@@ -7,6 +7,11 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
+  const date = new Date();
+  let dia = date.getDate();
+  let mes = date.getMonth() + 1;
+  let ano = date.getFullYear();
+
   return (
     <div className="grid grid-cols-2 my-20 gap-20">
       <div className="bg-blue-500">
@@ -19,7 +24,7 @@ export default function Home() {
             a disponibilidade das salas e auditório da FEPECS.
           </span>
           <br />
-          <span className="text-sm">dia de hoje</span>
+          <span className="text-sm">{`${dia}/${mes}/${ano}`}</span>
         </div>
       </div>
       <SalasDisponiveis />
@@ -29,7 +34,7 @@ export default function Home() {
         stopOnHover
         infiniteLoop
         centerMode
-        className="w-[30rem]"
+        className="w-[70%]"
       >
         <div>
           <Image
@@ -38,7 +43,7 @@ export default function Home() {
             height={500}
             alt="fepecs logo"
           />
-          <p>Sala 1</p>
+          <p className="my-8">Sala 1</p>
         </div>
         <div>
           <Image
@@ -47,7 +52,7 @@ export default function Home() {
             height={500}
             alt="fepecs logo"
           />
-          <p>Sala 2</p>
+          <p className="my-8">Sala 2</p>
         </div>
         <div>
           <Image
@@ -56,10 +61,9 @@ export default function Home() {
             height={500}
             alt="fepecs logo"
           />
-          <p>Sala 3</p>
+          <p className="my-8">Sala 3</p>
         </div>
       </Carousel>
-      {/* <span className="bg-red-500">carousel</span> */}
     </div>
   );
 }
