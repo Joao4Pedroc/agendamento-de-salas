@@ -4,6 +4,9 @@ export interface Sala {
   nome: string;
   descrição: string;
   imagem: string;
+  capacidade: number;
+  televisão: boolean;
+  internet: boolean;
 }
 
 export interface Usuario {

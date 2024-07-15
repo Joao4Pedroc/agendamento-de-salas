@@ -14,8 +14,8 @@ export default function Home() {
   let ano = date.getFullYear();
 
   return (
-    <div className="grid grid-cols-2 my-20 gap-20">
-      <div className="bg-blue-500">
+    <div className="grid grid-cols-2 my-20 gap-20 items-start ">
+      <div className="bg-blue-500 text-center">
         <div className="text-5xl text-[#000068] uppercase">
           Agendamento de salas
         </div>
@@ -26,10 +26,12 @@ export default function Home() {
           </span>
           <br />
           <span className="text-sm">{`${dia}/${mes}/${ano}`}</span>
+          <div className="w-full mx-[10%] mt-5 ">
+            <CarouselSalas />
+          </div>
         </div>
       </div>
       <SalasDisponiveis />
-      <CarouselSalas />
     </div>
   );
 }
