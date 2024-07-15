@@ -5,6 +5,7 @@ import Image from "next/image";
 
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import CarouselSalas from "./_components/CarouselSalas";
 
 export default function Home() {
   const date = new Date();
@@ -28,42 +29,7 @@ export default function Home() {
         </div>
       </div>
       <SalasDisponiveis />
-      <Carousel
-        showArrows
-        autoPlay
-        stopOnHover
-        infiniteLoop
-        centerMode
-        className="w-[70%]"
-      >
-        <div>
-          <Image
-            src="/logo_fepecs.png"
-            width={500}
-            height={500}
-            alt="fepecs logo"
-          />
-          <p className="my-8">Sala 1</p>
-        </div>
-        <div>
-          <Image
-            src="/logo_fepecs.png"
-            width={500}
-            height={500}
-            alt="fepecs logo"
-          />
-          <p className="my-8">Sala 2</p>
-        </div>
-        <div>
-          <Image
-            src="/logo_fepecs.png"
-            width={500}
-            height={500}
-            alt="fepecs logo"
-          />
-          <p className="my-8">Sala 3</p>
-        </div>
-      </Carousel>
+      <CarouselSalas />
     </div>
   );
 }
