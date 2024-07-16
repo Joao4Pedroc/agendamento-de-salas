@@ -8,6 +8,13 @@ import { useEffect, useState } from "react";
 import { Agendamento } from "@/app/_components/types";
 import getAgendamento from "@/app/_services/apiAgendamento";
 
+interface Event {
+  id: number;
+  start: Date;
+  end: Date;
+  title: string;
+}
+
 const localizer = momentLocalizer(moment);
 
 // Mudar a lingua das mensagens do calendario
@@ -30,19 +37,21 @@ function SalaId() {
   const [view, setView] = useState(Views.WEEK);
   const [date, setDate] = useState(new Date());
 
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await getAgendamento();
         if (!data) throw new Error("Não foi possivel carregar as informações");
-        const transformedData: any = data.map((agendamento: Agendamento) => ({
-          id: agendamento.id,
-          start: moment(agendamento.horarioEntrada).toDate(),
-          end: moment(agendamento.horarioSaida).toDate(),
-          title: `Sala ${agendamento.id}`,
-        }));
+        const transformedData: Event[] = data.map(
+          (agendamento: Agendamento) => ({
+            id: agendamento.id,
+            start: moment(agendamento.horarioEntrada).toDate(),
+            end: moment(agendamento.horarioSaida).toDate(),
+            title: `Sala ${agendamento.id}`,
+          })
+        );
         setEvents(transformedData);
       } catch (error) {
         console.error(error);
