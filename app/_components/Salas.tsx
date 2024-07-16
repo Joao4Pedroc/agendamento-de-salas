@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Sala } from "./types";
+import Link from "next/link";
 
 function Salas({ sala }: { sala: Sala }) {
   return (
@@ -18,7 +19,7 @@ function Salas({ sala }: { sala: Sala }) {
           <li>{sala.internet ? "internet" : ""}</li>
         </ul>
       </div>
-      <span>Visualizar disponibilidade</span>
+      <Link href="/">Visualizar disponibilidade</Link>
     </div>
   );
 }
