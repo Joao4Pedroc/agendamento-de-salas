@@ -1,5 +1,5 @@
 function SalaId() {
-  return <div>teste id</div>;
+  return <div>calendario id</div>;
 }
 
 export default SalaId;

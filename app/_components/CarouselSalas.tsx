@@ -7,6 +7,7 @@ import Image from "next/image";
 
 export default function CarouselSalas() {
   const [salas, setSalas] = useState<Sala[]>([]);
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -20,6 +21,8 @@ export default function CarouselSalas() {
 
     fetchData();
   }, []);
+
+  // quando clicar numa imagem do carousel, ira abrir um modal, no modal tera um botao de visualizar disponibilidade
   return (
     <Carousel
       showArrows
@@ -31,7 +34,7 @@ export default function CarouselSalas() {
       className="w-[70%]"
     >
       {salas.map((sala) => (
-        <div key={sala.id}>
+        <button key={sala.id}>
           <Image
             src={`${sala.imagem}`}
             width={500}
@@ -39,7 +42,7 @@ export default function CarouselSalas() {
             alt={`sala ${sala.id}`}
           />
           <p className="my-8">{`Sala ${sala.nome}`}</p>
-        </div>
+        </button>
       ))}
     </Carousel>
   );

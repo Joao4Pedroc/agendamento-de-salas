@@ -5,7 +5,7 @@ import Salas from "./Salas";
 import SearchBar from "./SearchBar";
 import getSalas from "../_services/apiSalas";
 import { Sala } from "./types";
-import Image from "next/image";
+import { HiCog8Tooth } from "react-icons/hi2";
 
 function SalasDisponiveis() {
   const [salas, setSalas] = useState<Sala[]>([]);
@@ -28,7 +28,9 @@ function SalasDisponiveis() {
     <div className="bg-red-400">
       <div className="flex">
         <SearchBar />
-        <div>config</div>
+        <button className="px-2 py-3 text-[1.2rem]">
+          <HiCog8Tooth />
+        </button>
       </div>
       <span>salas disponiveis</span>
       <div className="">
