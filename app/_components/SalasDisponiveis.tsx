@@ -25,7 +25,7 @@ function SalasDisponiveis() {
   }, []);
 
   return (
-    <div className="bg-yellow-400">
+    <div className="bg-red-400">
       <div className="flex">
         <SearchBar />
         <div>config</div>
