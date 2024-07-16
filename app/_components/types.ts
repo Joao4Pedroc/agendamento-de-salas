@@ -16,3 +16,13 @@ export interface Usuario {
   email: string;
   admin: boolean;
 }
+
+export interface Agendamento {
+  id: number;
+  created_at: string;
+  dia: Date;
+  horarioEntrada: Date;
+  horarioSaida: Date;
+  idSala: number;
+  idUsuario: number;
+}
