@@ -1,12 +1,15 @@
 "use client";
 
+import Button from "@/app/_components/Button";
 import Calendario from "@/app/_components/Calendario";
 
 function SalaId() {
   return (
-    <div>
+    <div className="pt-2">
       <Calendario />
-      <div>AGENDE UM HORARIO</div>
+      <div className="pt-5 pl-[85%]">
+        <Button>AGENDE UM HORARIO</Button>
+      </div>
     </div>
   );
 }
