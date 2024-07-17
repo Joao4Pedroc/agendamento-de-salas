@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-function Button({ href, children }: { href: string; children: string }) {
+function ButtonLink({ href, children }: { href: string; children: string }) {
   return (
     <Link
       href={href}
@@ -11,4 +11,4 @@ function Button({ href, children }: { href: string; children: string }) {
   );
 }
 
-export default Button;
+export default ButtonLink;

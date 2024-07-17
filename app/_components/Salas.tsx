@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Sala } from "./types";
-import Link from "next/link";
-import Button from "./Button";
+import ButtonLink from "./ButtonLink";
 
 function Salas({ sala }: { sala: Sala }) {
   return (
@@ -24,7 +23,9 @@ function Salas({ sala }: { sala: Sala }) {
         </ul>
       </div>
       <div className="m-auto pb-5">
-        <Button href={`/salas/${sala.id}`}>Visualizar disponibilidade</Button>
+        <ButtonLink href={`/salas/${sala.id}`}>
+          Visualizar disponibilidade
+        </ButtonLink>
       </div>
     </div>
   );
