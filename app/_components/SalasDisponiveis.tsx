@@ -40,15 +40,16 @@ function SalasDisponiveis({
           <HiCog8Tooth />
         </button>
       </div>
-      <span>salas disponiveis</span>
-      <div className="">
+      <span className="font-bold">Salas disponiveis: </span>
+      <div>
         {salas.map((sala) => (
-          <Salas
-            key={sala.id}
-            sala={sala}
-            setSalaAtual={setSalaAtual}
-            setShowModal={setShowModal}
-          />
+          <div className="py-2" key={sala.id}>
+            <Salas
+              sala={sala}
+              setSalaAtual={setSalaAtual}
+              setShowModal={setShowModal}
+            />
+          </div>
         ))}
       </div>
     </div>
