@@ -5,9 +5,19 @@ import { Sala } from "./types";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 
-export default function CarouselSalas() {
-  const [salas, setSalas] = useState<Sala[]>([]);
-
+export default function CarouselSalas({
+  isVisible,
+  setIsVisible,
+  salas,
+  setSalas,
+  setSalaAtual,
+}: {
+  isVisible: boolean;
+  setIsVisible: Function;
+  salas: Sala[];
+  setSalas: Function;
+  setSalaAtual: Function;
+}) {
   useEffect(() => {
     async function fetchData() {
       try {
@@ -20,21 +30,27 @@ export default function CarouselSalas() {
     }
 
     fetchData();
-  }, []);
+  }, [setSalas]);
 
   // quando clicar numa imagem do carousel, ira abrir um modal, no modal tera um botao de visualizar disponibilidade
   return (
     <Carousel
-      showArrows
+      showArrows={!isVisible}
       autoPlay
       stopOnHover
       infiniteLoop
-      centerMode
       showThumbs={false}
+      showIndicators={!isVisible}
       className="w-[70%]"
     >
-      {salas.map((sala) => (
-        <button key={sala.id}>
+      {salas.map((sala: Sala) => (
+        <button
+          key={sala.id}
+          onClick={() => {
+            setIsVisible(!isVisible);
+            setSalaAtual(sala);
+          }}
+        >
           <Image
             src={`${sala.imagem}`}
             width={500}

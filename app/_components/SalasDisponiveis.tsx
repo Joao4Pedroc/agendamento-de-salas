@@ -25,9 +25,11 @@ function SalasDisponiveis() {
   }, []);
 
   return (
-    <div className="bg-red-400">
+    <div className="">
       <div className="flex">
-        <SearchBar />
+        <div className="w-full">
+          <SearchBar />
+        </div>
         <button className="px-2 py-3 text-[1.2rem]">
           <HiCog8Tooth />
         </button>
