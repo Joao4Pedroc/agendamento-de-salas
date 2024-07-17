@@ -44,7 +44,7 @@ export default function Home() {
         </div>
         {salaAtual ? (
           <Modal isVisible={showModal} setIsVisible={setShowModal}>
-            <div className="font-bold mb-20">Sala {salaAtual?.nome}</div>
+            <div className="font-bold mb-8">Sala {salaAtual?.nome}</div>
             <div className="flex gap-12 p-10  ">
               <Image
                 className="rounded-md"
@@ -78,7 +78,10 @@ export default function Home() {
           ""
         )}
       </div>
-      <SalasDisponiveis />
+      <SalasDisponiveis
+        setSalaAtual={setSalaAtual}
+        setShowModal={setShowModal}
+      />
     </div>
   );
 }

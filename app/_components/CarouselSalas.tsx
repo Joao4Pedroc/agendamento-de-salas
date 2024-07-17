@@ -52,12 +52,13 @@ export default function CarouselSalas({
           }}
         >
           <Image
+            className="rounded-md"
             src={`${sala.imagem}`}
             width={500}
             height={500}
             alt={`sala ${sala.id}`}
           />
-          <p className="my-8">{`Sala ${sala.nome}`}</p>
+          <p className="my-8 font-medium">{`Sala ${sala.nome}`}</p>
         </button>
       ))}
     </Carousel>

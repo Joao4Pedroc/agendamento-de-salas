@@ -2,10 +2,19 @@ import Image from "next/image";
 import { Sala } from "./types";
 import ButtonLink from "./ButtonLink";
 
-function Salas({ sala }: { sala: Sala }) {
+function Salas({
+  sala,
+  setSalaAtual,
+  setShowModal,
+}: {
+  sala: Sala;
+  setSalaAtual: Function;
+  setShowModal: Function;
+}) {
   return (
     <div className="grid grid-cols-3 py-3">
       <Image
+        className="rounded-md"
         src={sala.imagem}
         height={150}
         width={150}
@@ -13,12 +22,19 @@ function Salas({ sala }: { sala: Sala }) {
       />
       <div>
         {/* <span>sala {sala.nome}</span> */}
-        <ul>
-          <li>capacidade {sala.capacidade}</li>
-          <li>{sala.televisão ? "televisao" : ""}</li>
-          <li>{sala.internet ? "internet" : ""}</li>
+        <ul className="font-medium">
+          <li>Capacidade: {sala.capacidade} pessoas</li>
+          <li>{sala.televisão ? "Televisão" : "Não possui televisão"}</li>
+          <li>{sala.internet ? "Internet" : "Não possui internet"}</li>
           <li className="text-blue-900">
-            <button>Ver mais informações</button>
+            <button
+              onClick={() => {
+                setSalaAtual(sala);
+                setShowModal(true);
+              }}
+            >
+              Ver mais informações
+            </button>
           </li>
         </ul>
       </div>

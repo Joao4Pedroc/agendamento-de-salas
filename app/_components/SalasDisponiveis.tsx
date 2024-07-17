@@ -7,7 +7,13 @@ import getSalas from "../_services/apiSalas";
 import { Sala } from "./types";
 import { HiCog8Tooth } from "react-icons/hi2";
 
-function SalasDisponiveis() {
+function SalasDisponiveis({
+  setSalaAtual,
+  setShowModal,
+}: {
+  setSalaAtual: Function;
+  setShowModal: Function;
+}) {
   const [salas, setSalas] = useState<Sala[]>([]);
 
   useEffect(() => {
@@ -37,7 +43,12 @@ function SalasDisponiveis() {
       <span>salas disponiveis</span>
       <div className="">
         {salas.map((sala) => (
-          <Salas key={sala.id} sala={sala} />
+          <Salas
+            key={sala.id}
+            sala={sala}
+            setSalaAtual={setSalaAtual}
+            setShowModal={setShowModal}
+          />
         ))}
       </div>
     </div>
