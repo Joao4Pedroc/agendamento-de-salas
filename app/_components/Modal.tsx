@@ -1,3 +1,5 @@
+import { HiMiniXCircle } from "react-icons/hi2";
+
 export default function Modal({
   isVisible,
   setIsVisible,
@@ -22,12 +24,12 @@ export default function Modal({
       id="wrapper"
       onClick={handleClose}
     >
-      <div className="w-[600px] min-h-[400px] bg-white p-2 rounded">
+      <div className="min-w-[700px] min-h-[400px] bg-white p-2 rounded">
         <button
           onClick={() => setIsVisible(false)}
-          className="text-black text-xl flex ml-[95%]"
+          className="text-black text-4xl flex ml-[95%]"
         >
-          X
+          <HiMiniXCircle />
         </button>
         {children}
       </div>

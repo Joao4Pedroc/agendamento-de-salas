@@ -45,15 +45,15 @@ export default function Home() {
         {salaAtual ? (
           <Modal isVisible={showModal} setIsVisible={setShowModal}>
             <div className="font-bold mb-8">Sala {salaAtual?.nome}</div>
-            <div className="flex gap-12 p-10  ">
+            <div className="flex gap-12 p-12  items-center ">
               <Image
                 className="rounded-md"
                 src={salaAtual.imagem}
-                height={200}
-                width={200}
+                width={300}
+                height={300}
                 alt={`sala ${salaAtual?.nome}`}
               />
-              <ul className="grid content-center items-center text-lg font-medium list-disc">
+              <ul className="grid content-center items-center text-xl font-medium list-disc ">
                 <li>Capacidade: {salaAtual.capacidade} pessoas</li>
                 <li className="place-self-start pl-1">
                   {salaAtual.televisão ? "Televisão" : "Não possui televisão"}
