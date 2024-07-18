@@ -7,11 +7,14 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { Agendamento } from "@/app/_components/types";
 import getAgendamento from "@/app/_services/apiAgendamento";
+import { usePathname } from "next/navigation";
 
 interface Event {
   id: number;
   start: Date;
   end: Date;
+  idSalaAgenda: number;
+  idUsuarioAgenda: number;
   title: string;
 }
 
@@ -39,6 +42,8 @@ function Calendario() {
 
   const [events, setEvents] = useState<Event[]>([]);
 
+  const idUrl = Number(usePathname().slice(7));
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -54,16 +59,16 @@ function Calendario() {
             title: `Sala ${agendamento.id}`,
           })
         );
-        setEvents(transformedData);
+        setEvents(
+          transformedData.filter((sala) => sala.idSalaAgenda === idUrl)
+        );
       } catch (error) {
         console.error(error);
       }
     }
 
     fetchData();
-  }, []);
-
-  console.log(events);
+  }, [idUrl]);
 
   // evento que serao pegos da database
   // filtrar os eventos apenas para o idSala
