@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Sala } from "./types";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import { HiMiniArrowLeftCircle, HiMiniArrowRightCircle } from "react-icons/hi2";
 
 export default function CarouselSalas({
   isVisible,
@@ -35,6 +36,30 @@ export default function CarouselSalas({
   // quando clicar numa imagem do carousel, ira abrir um modal, no modal tera um botao de visualizar disponibilidade
   return (
     <Carousel
+      renderArrowPrev={(onClickHandler, hasPrev, label) =>
+        hasPrev && (
+          <button
+            type="button"
+            onClick={onClickHandler}
+            title={label}
+            className="absolute z-10 top-[calc(50%-10%)] w-8 h-8 cursor-pointer left-2 text-4xl"
+          >
+            <HiMiniArrowLeftCircle className="fill-amber-400 hover:fill-amber-600 " />
+          </button>
+        )
+      }
+      renderArrowNext={(onClickHandler, hasPrev, label) =>
+        hasPrev && (
+          <button
+            type="button"
+            onClick={onClickHandler}
+            title={label}
+            className="absolute z-10 top-[calc(50%-10%)] w-8 h-8 cursor-pointer right-2 text-4xl "
+          >
+            <HiMiniArrowRightCircle className="fill-amber-400 hover:fill-amber-600" />
+          </button>
+        )
+      }
       showArrows={!isVisible}
       autoPlay
       stopOnHover
