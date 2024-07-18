@@ -12,7 +12,7 @@ function Salas({
   setShowModal: Function;
 }) {
   return (
-    <div className="grid grid-cols-3 py-3">
+    <div className="grid grid-cols-3 py-3 ">
       <Image
         className="rounded-md"
         src={sala.imagem}
@@ -22,11 +22,11 @@ function Salas({
       />
       <div>
         {/* <span>sala {sala.nome}</span> */}
-        <ul className="font-medium">
+        <ul className="font-medium ">
           <li>Capacidade: {sala.capacidade} pessoas</li>
           <li>{sala.televisão ? "Televisão" : "Não possui televisão"}</li>
           <li>{sala.internet ? "Internet" : "Não possui internet"}</li>
-          <li className="text-blue-900">
+          <li className="text-blue-900 ">
             <button
               onClick={() => {
                 setSalaAtual(sala);

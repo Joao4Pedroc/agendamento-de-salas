@@ -31,7 +31,7 @@ function SalasDisponiveis({
   }, []);
 
   return (
-    <div className="">
+    <div className="border-solid border-gray-400 border-2 p-4 rounded-md">
       <div className="flex">
         <div className="w-full">
           <SearchBar />

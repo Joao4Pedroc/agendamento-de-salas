@@ -42,7 +42,7 @@ export default function CarouselSalas({
             type="button"
             onClick={onClickHandler}
             title={label}
-            className="absolute z-10 top-[calc(50%-10%)] w-8 h-8 cursor-pointer left-2 text-4xl"
+            className="absolute z-10 top-[calc(50%-10%)] w-8 h-8 cursor-pointer left-0 text-4xl"
           >
             <HiMiniArrowLeftCircle className="fill-amber-400 hover:fill-amber-600 " />
           </button>
@@ -77,7 +77,7 @@ export default function CarouselSalas({
           }}
         >
           <Image
-            className="rounded-md"
+            className="rounded-md x-7"
             src={`${sala.imagem}`}
             width={500}
             height={500}
