@@ -36,7 +36,7 @@ function SalasDisponiveis({
         <div className="w-full">
           <SearchBar />
         </div>
-        <button className="px-2 py-3 text-[1.2rem]">
+        <button className="px-4 pb-3 text-[1.2rem]">
           <HiCog8Tooth />
         </button>
       </div>

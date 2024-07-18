@@ -6,7 +6,10 @@ import Header from "./_components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Agendamento de salas FEPECS",
+  title: {
+    template: "%s / FEPECS",
+    default: "Agendamento de salas",
+  },
   description: "Website para agendamento de salas na FEPECS",
   icons: "logo_fepecs.png",
 };

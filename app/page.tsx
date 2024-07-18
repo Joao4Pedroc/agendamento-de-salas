@@ -26,13 +26,13 @@ export default function Home() {
           Agendamento de salas
         </div>
         <div className="mb-20">
-          <span className="text-black ">
+          <span className="text-black text-[1rem] font-semibold ">
             Sejam bem-vindos ao site de agendamento de salas. Aqui você pode ver
-            a disponibilidade das salas e auditório da FEPECS.
+            <br />a disponibilidade das salas e auditório da FEPECS.
           </span>
           <br />
           <span className="text-sm">{`${dia}/${mes}/${ano}`}</span>
-          <div className="w-full mx-[10%] mt-5 ">
+          <div className="w-full mx-[15%] mt-5 ">
             <CarouselSalas
               setIsVisible={setShowModal}
               isVisible={showModal}

@@ -1,7 +1,9 @@
-"use client";
-
 import Button from "@/app/_components/Button";
 import Calendario from "@/app/_components/Calendario";
+
+export const metadata = {
+  title: "Calendário",
+};
 
 function SalaId() {
   return (

@@ -47,6 +47,8 @@ function Calendario() {
         const transformedData: Event[] = data.map(
           (agendamento: Agendamento) => ({
             id: agendamento.id,
+            idSalaAgenda: agendamento.idSala,
+            idUsuarioAgenda: agendamento.idUsuario,
             start: moment(agendamento.horarioEntrada).toDate(),
             end: moment(agendamento.horarioSaida).toDate(),
             title: `Sala ${agendamento.id}`,
@@ -61,7 +63,10 @@ function Calendario() {
     fetchData();
   }, []);
 
+  console.log(events);
+
   // evento que serao pegos da database
+  // filtrar os eventos apenas para o idSala
 
   return (
     <Calendar
