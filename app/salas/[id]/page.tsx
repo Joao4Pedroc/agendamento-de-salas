@@ -15,7 +15,6 @@ function SalaId() {
       <div className="pt-5 pl-[85%]">
         <Button onClick={setShowModal}>AGENDE UM HORARIO</Button>
         <Modal isVisible={showModal} setIsVisible={setShowModal}>
-          <div>Agendar um horario</div>
           <DatePickerForm />
         </Modal>
       </div>
