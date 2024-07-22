@@ -1,11 +1,42 @@
+import { Agendamento } from "../_components/types";
 import supabase from "./supabase";
 
-export default async function getAgendamento() {
+export async function getAgendamento() {
   let { data, error } = await supabase.from("Agendamento").select("*");
 
   if (error) {
     console.error(error);
     throw new Error("Não foi possivel carregar os agendamentos.");
+  }
+
+  return data;
+}
+
+export async function sendAgendamento({
+  dia,
+  horarioEntrada,
+  horarioSaida,
+  idSala,
+  idUsuario,
+  titulo,
+}: Agendamento) {
+  const { data, error } = await supabase
+    .from("Agendamento")
+    .insert([
+      {
+        dia: dia,
+        horarioEntrada: horarioEntrada,
+        horarioSaida: horarioSaida,
+        idSala: idSala,
+        idUsuario: idUsuario,
+        titulo: titulo,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Não foi possivel concluir o agendamento.");
   }
 
   return data;

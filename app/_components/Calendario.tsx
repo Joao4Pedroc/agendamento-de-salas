@@ -6,7 +6,7 @@ import "moment/locale/pt-br";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Agendamento } from "@/app/_components/types";
-import getAgendamento from "@/app/_services/apiAgendamento";
+import { getAgendamento } from "../_services/apiAgendamento";
 import { usePathname } from "next/navigation";
 
 interface Event {
@@ -56,7 +56,7 @@ function Calendario() {
             idUsuarioAgenda: agendamento.idUsuario,
             start: moment(agendamento.horarioEntrada).toDate(),
             end: moment(agendamento.horarioSaida).toDate(),
-            title: `Sala ${agendamento.id}`,
+            title: `Sala ${agendamento.idSala}`,
           })
         );
         setEvents(
@@ -87,7 +87,7 @@ function Calendario() {
       onNavigate={(date) => {
         setDate(new Date(date));
       }}
-      style={{ height: "80vh" }}
+      style={{ height: "75vh" }}
     />
   );
 }

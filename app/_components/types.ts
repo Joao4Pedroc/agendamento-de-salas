@@ -20,9 +20,10 @@ export interface Usuario {
 export interface Agendamento {
   id: number;
   created_at: string;
-  dia: Date;
-  horarioEntrada: Date;
-  horarioSaida: Date;
-  idSala: number;
-  idUsuario: number;
+  dia: Date | string;
+  horarioEntrada: Date | string;
+  horarioSaida: Date | string;
+  idSala: number | string;
+  idUsuario: number | string;
+  titulo: string;
 }
