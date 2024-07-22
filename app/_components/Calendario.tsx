@@ -59,6 +59,7 @@ function Calendario() {
             title: `Sala ${agendamento.idSala}`,
           })
         );
+
         setEvents(
           transformedData.filter((sala) => sala.idSalaAgenda === idUrl)
         );

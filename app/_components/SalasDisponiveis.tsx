@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Salas from "./Salas";
 import SearchBar from "./SearchBar";
-import getSalas from "../_services/apiSalas";
+import { getSalas } from "../_services/apiSalas";
 import { Sala } from "./types";
 import { HiCog8Tooth } from "react-icons/hi2";
 

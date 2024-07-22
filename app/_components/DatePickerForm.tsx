@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 registerLocale("ptBR", ptBR);
 
-const DatePickerForm: React.FC = () => {
+const DatePickerForm: React.FC = ({ sala }: any) => {
   const [date, setDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
@@ -17,7 +17,7 @@ const DatePickerForm: React.FC = () => {
   const idUsuario = 1;
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = () => {
     if (date && startTime && endTime) {
       const {
         formattedDay: dia,
@@ -39,7 +39,7 @@ const DatePickerForm: React.FC = () => {
 
   return (
     <form className="max-w-sm mx-auto flex flex-col items-center">
-      <p className="text-xl font-semibold mb-10">Agendar -nomeSala-</p>
+      <p className="text-xl font-semibold mb-10">Agendar {`${sala[0].nome}`}</p>
       <div className="self-start">
         <div className="mb-5">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

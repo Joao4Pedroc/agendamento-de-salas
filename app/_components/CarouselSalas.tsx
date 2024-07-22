@@ -1,4 +1,4 @@
-import getSalas from "../_services/apiSalas";
+import { getSalas } from "../_services/apiSalas";
 
 import { useEffect, useState } from "react";
 import { Sala } from "./types";

@@ -5,10 +5,29 @@ import ButtonBack from "@/app/_components/ButtonBack";
 import Calendario from "@/app/_components/Calendario";
 import DatePickerForm from "@/app/_components/DatePickerForm";
 import Modal from "@/app/_components/Modal";
-import { useState } from "react";
+import { getSalasNomesId } from "@/app/_services/apiSalas";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 function SalaId() {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [sala, setSalas] = useState<any>();
+  const idUrl = Number(usePathname().slice(7));
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const salas = await getSalasNomesId();
+        if (!salas) throw new Error("Não foi possivel carregar as informações");
+        const sala = salas.filter((sala) => sala.id === idUrl);
+        setSalas(sala);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, [idUrl]);
 
   return (
     <div className="pt-2">
@@ -17,7 +36,7 @@ function SalaId() {
       <div className="pt-5 pl-[85%]">
         <Button onClick={setShowModal}>AGENDE UM HORARIO</Button>
         <Modal isVisible={showModal} setIsVisible={setShowModal}>
-          <DatePickerForm />
+          <DatePickerForm sala={sala} />
         </Modal>
       </div>
     </div>
