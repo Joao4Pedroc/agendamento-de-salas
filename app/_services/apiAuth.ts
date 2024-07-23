@@ -1,6 +1,6 @@
 import supabase from "./supabase";
 
-export default async function login({
+export async function login({
   email,
   password,
 }: {
@@ -12,8 +12,10 @@ export default async function login({
     password,
   });
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    alert(error.message);
+    throw new Error(error.message);
+  }
 
-  console.log(data);
   return data;
 }
