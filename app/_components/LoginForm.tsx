@@ -1,0 +1,46 @@
+function LoginForm() {
+  return (
+    <form className="max-w-sm mx-auto mt-[10%]">
+      <p className="text-center mb-10 font-bold text-3xl">Entre na sua conta</p>
+      <div className="border-solid border-gray-400 border-2 p-4 rounded-xl mt-8">
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Seu email
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Sua senha
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
+        >
+          Entre na sua conta
+        </button>
+        <p className="text-sm">
+          ou registre uma{" "}
+          <a href="/signin" className="text-blue-600">
+            nova conta
+          </a>
+        </p>
+      </div>
+    </form>
+  );
+}
+
+export default LoginForm;
