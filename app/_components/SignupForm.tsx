@@ -10,7 +10,7 @@ function SignupForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordTwo, setPasswordTwo] = useState<string>("");
-  const [isLogged, setIsLogged] = useState();
+  const [isLogged, setIsLogged] = useState<string | null>();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
