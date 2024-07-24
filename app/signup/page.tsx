@@ -1,9 +1,9 @@
-import SigninForm from "../_components/SigninForm";
+import SignupForm from "../_components/SignupForm";
 
 export default function sigin() {
   return (
     <div>
-      <SigninForm />
+      <SignupForm />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-function SigninForm() {
+function SignupForm() {
   return (
     <form className="max-w-sm mx-auto mt-[10%]">
       <p className="text-center mb-10 font-bold text-3xl">
@@ -56,4 +56,4 @@ function SigninForm() {
   );
 }
 
-export default SigninForm;
+export default SignupForm;

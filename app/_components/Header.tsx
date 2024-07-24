@@ -14,7 +14,9 @@ function Header() {
         />
       </Link>
       <div className="pr-10 flex mt-5 gap-5">
-        <span className="pr-5 font-bold">login</span>
+        <a href="/login" className="pr-5 font-bold">
+          login
+        </a>
         <HiMiniUser className="w-7 h-7" />
       </div>
     </header>

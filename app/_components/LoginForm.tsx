@@ -57,7 +57,7 @@ function LoginForm() {
         </button>
         <p className="text-sm">
           ou registre uma{" "}
-          <a href="/signin" className="text-blue-600">
+          <a href="/signup" className="text-blue-600">
             nova conta
           </a>
         </p>
