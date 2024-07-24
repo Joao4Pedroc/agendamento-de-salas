@@ -1,12 +1,14 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { login } from "../_services/apiAuth";
 import { navigate } from "../_Helper/navigate";
+import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogged, setIsLogged] = useState();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -16,8 +18,25 @@ function LoginForm() {
     }
 
     const data = await login({ email, password });
-    if (data) navigate();
+    if (data) {
+      navigate();
+    }
   }
+
+  useEffect(() => {
+    async function checkUser() {
+      try {
+        const { token, isLoading } = await checkLoggedIn();
+        setIsLogged(token);
+        if (!token) throw new Error("Não foi possivel carregar as informações");
+        if (token) navigate();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    checkUser();
+  }, [isLogged]);
 
   return (
     <form className="max-w-sm mx-auto mt-[10%]">

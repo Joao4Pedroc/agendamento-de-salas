@@ -1,14 +1,16 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { navigate } from "../_Helper/navigate";
 import { signUp } from "../_services/apiAuth";
+import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 
 function SignupForm() {
   const [nome, setNome] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordTwo, setPasswordTwo] = useState<string>("");
+  const [isLogged, setIsLogged] = useState();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -24,6 +26,22 @@ function SignupForm() {
     const data = await signUp({ email, password });
     if (data) navigate();
   }
+
+  useEffect(() => {
+    async function checkUser() {
+      try {
+        const { token, isLoading } = await checkLoggedIn();
+        setIsLogged(token);
+        if (!token) throw new Error("Não foi possivel carregar as informações");
+        if (token) navigate();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    checkUser();
+  }, [isLogged]);
+
   return (
     <form className="max-w-sm mx-auto mt-[10%]">
       <p className="text-center mb-10 font-bold text-3xl">

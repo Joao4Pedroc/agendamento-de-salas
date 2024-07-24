@@ -1,8 +1,6 @@
-import { User } from "@supabase/supabase-js";
 import supabase from "../_services/supabase";
 
 export const checkLoggedIn = async () => {
-  console.log("teste");
   try {
     const { data, error } = await supabase.auth.getSession();
     if (error) throw error;
