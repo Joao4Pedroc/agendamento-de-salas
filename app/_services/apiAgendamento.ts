@@ -21,12 +21,12 @@ export async function sendAgendamento({
   titulo,
   admin,
 }: {
-  dia: Agendamento;
-  horarioEntrada: Agendamento;
-  horarioSaida: Agendamento;
-  idSala: Agendamento;
-  idUsuario: Agendamento;
-  titulo: Agendamento;
+  dia: string;
+  horarioEntrada: string;
+  horarioSaida: string;
+  idSala: number;
+  idUsuario: string;
+  titulo: string;
   admin: boolean;
 }) {
   const agendamento = admin ? "Agendamento" : "Agendamento_pendente";

@@ -16,8 +16,8 @@ function SalaId() {
   const [sala, setSalas] = useState<any>();
   const idUrl = Number(usePathname().slice(7));
 
-  const [admin, setAdmin] = useState();
-  const [userId, setUserId] = useState<any>();
+  const [admin, setAdmin] = useState<boolean>();
+  const [userId, setUserId] = useState<string | undefined | null>();
 
   useEffect(() => {
     async function checkUser() {
@@ -36,7 +36,7 @@ function SalaId() {
   useEffect(() => {
     async function checkUserId() {
       try {
-        const user = await getUserAdmin({ userId });
+        const user: any = await getUserAdmin({ userId });
         setAdmin(user[0].admin);
         if (!user) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
@@ -69,7 +69,7 @@ function SalaId() {
       <div className="pt-5 pl-[85%]">
         <Button onClick={setShowModal}>AGENDE UM HORARIO</Button>
         <Modal isVisible={showModal} setIsVisible={setShowModal}>
-          <DatePickerForm sala={sala} admin={admin} />
+          <DatePickerForm sala={sala} admin={admin} idUsuario={userId} />
         </Modal>
       </div>
     </div>

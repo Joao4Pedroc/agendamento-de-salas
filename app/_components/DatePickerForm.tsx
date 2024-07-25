@@ -10,13 +10,12 @@ import { usePathname } from "next/navigation";
 
 registerLocale("ptBR", ptBR);
 
-const DatePickerForm: React.FC = ({ sala, admin }: any) => {
+const DatePickerForm: React.FC = ({ sala, admin, idUsuario }: any) => {
   const [date, setDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
 
   const idSala = Number(usePathname().slice(7));
-  const idUsuario = 1;
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
   console.log(admin);
 
