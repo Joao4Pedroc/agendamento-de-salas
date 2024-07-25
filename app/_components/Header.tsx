@@ -6,6 +6,7 @@ import { HiMiniUser } from "react-icons/hi2";
 import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 import { useEffect, useState } from "react";
 import Logout from "./Logout";
+import Login from "./Login";
 
 function Header() {
   const [isLogged, setIsLogged] = useState<string | null>();
@@ -36,14 +37,8 @@ function Header() {
           alt="fepecs logo"
         />
       </Link>
-      <div className="pr-10 flex mt-5 gap-5">
-        {isLogged ? (
-          <Logout />
-        ) : (
-          <a href="/login" className="pr-5 font-bold">
-            login
-          </a>
-        )}
+      <div className="mr-10 flex mt-5 gap-4 items-center">
+        {isLogged ? <Logout /> : <Login />}
 
         <HiMiniUser className="w-7 h-7" />
       </div>

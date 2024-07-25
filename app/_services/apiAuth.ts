@@ -24,9 +24,11 @@ export async function login({
 export async function signUp({
   email,
   password,
+  nome,
 }: {
   email: string;
   password: string;
+  nome: string;
 }) {
   // criacão do usuario
   const { data: user, error } = await supabase.auth.signUp({
@@ -42,7 +44,7 @@ export async function signUp({
   // colocando o usuario na database usuarios
   const { data, error: insertError } = await supabase
     .from("Usuários")
-    .insert([{ id: user.user?.id, admin: false }])
+    .insert([{ id: user.user?.id, admin: false, nome: nome }])
     .select();
 
   // checando se ocorreu um erro, talvez ocorra um problema se criar o usuario na sessão Auth e nao criar na sessão Usuarios

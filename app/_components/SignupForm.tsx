@@ -23,7 +23,7 @@ function SignupForm() {
       return;
     }
 
-    const data = await signUp({ email, password });
+    const data = await signUp({ email, password, nome });
     if (data) navigate();
   }
 

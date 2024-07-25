@@ -8,7 +8,7 @@ import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLogged, setIsLogged] = useState();
+  const [isLogged, setIsLogged] = useState<string | null>();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
