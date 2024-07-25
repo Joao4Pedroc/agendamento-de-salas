@@ -30,7 +30,6 @@ export async function sendAgendamento({
   admin: boolean;
 }) {
   const agendamento = admin ? "Agendamento" : "Agendamento_pendente";
-  console.log("agendamento", admin, agendamento);
 
   const { data, error } = await supabase
     .from(agendamento)

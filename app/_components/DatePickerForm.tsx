@@ -17,10 +17,8 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario }: any) => {
 
   const idSala = Number(usePathname().slice(7));
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
-  console.log(admin);
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (date && startTime && endTime) {
       const {
         formattedDay: dia,

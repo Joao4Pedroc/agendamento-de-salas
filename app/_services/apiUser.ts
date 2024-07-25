@@ -11,7 +11,6 @@ export async function getUserAdmin({ userId }: any) {
   }
 
   const user = allUser?.filter((user) => user.id === userId);
-  console.log("here", user);
 
   return user;
 }

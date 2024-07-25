@@ -18,6 +18,7 @@ function LoginForm() {
     }
 
     const data = await login({ email, password });
+    console.log(data);
     if (data) {
       navigate();
     }
@@ -26,10 +27,9 @@ function LoginForm() {
   useEffect(() => {
     async function checkUser() {
       try {
-        const { id, isLoading } = await checkLoggedIn();
-        console.log(id);
+        const { id } = await checkLoggedIn();
         if (!id) throw new Error("Não foi possivel carregar as informações");
-        if (!id) navigate();
+        if (id) navigate();
       } catch (error) {
         console.error(error);
       }
