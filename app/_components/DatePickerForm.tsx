@@ -1,5 +1,7 @@
+"use client";
+
 import { ptBR } from "date-fns/locale";
-import React, { useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import formatDateTime from "../_Helper/formatTime";
@@ -8,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 registerLocale("ptBR", ptBR);
 
-const DatePickerForm: React.FC = ({ sala }: any) => {
+const DatePickerForm: React.FC = ({ sala, admin }: any) => {
   const [date, setDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
@@ -16,8 +18,10 @@ const DatePickerForm: React.FC = ({ sala }: any) => {
   const idSala = Number(usePathname().slice(7));
   const idUsuario = 1;
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
+  console.log(admin);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
     if (date && startTime && endTime) {
       const {
         formattedDay: dia,
@@ -31,7 +35,14 @@ const DatePickerForm: React.FC = ({ sala }: any) => {
         idSala,
         idUsuario,
         titulo,
+        admin,
       });
+
+      if (admin) alert("Horario agendado.");
+      else
+        alert(
+          "Horario pendente para agendamento, espere algum admin aprovar o agendamento"
+        );
     } else {
       alert("Preencha todos os campos");
     }

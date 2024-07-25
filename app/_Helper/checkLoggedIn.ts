@@ -4,16 +4,16 @@ export const checkLoggedIn = async () => {
   try {
     const { data, error } = await supabase.auth.getSession();
     if (error) throw error;
-    const token = data.session?.access_token;
+    const id = data.session?.user.id;
 
     return {
-      token,
+      id,
       isLoading: false,
     };
   } catch (error) {
     console.error("Error checking user login status:", error);
     return {
-      token: null,
+      id: null,
       isLoading: false,
     };
   }

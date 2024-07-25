@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { Agendamento } from "@/app/_components/types";
 import { getAgendamento } from "../_services/apiAgendamento";
 import { usePathname } from "next/navigation";
+import { getUserAdmin } from "../_services/apiUser";
+import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 
 interface Event {
   id: number;

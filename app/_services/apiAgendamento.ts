@@ -19,9 +19,21 @@ export async function sendAgendamento({
   idSala,
   idUsuario,
   titulo,
-}: Agendamento) {
+  admin,
+}: {
+  dia: Agendamento;
+  horarioEntrada: Agendamento;
+  horarioSaida: Agendamento;
+  idSala: Agendamento;
+  idUsuario: Agendamento;
+  titulo: Agendamento;
+  admin: boolean;
+}) {
+  const agendamento = admin ? "Agendamento" : "Agendamento_pendente";
+  console.log("agendamento", admin, agendamento);
+
   const { data, error } = await supabase
-    .from("Agendamento")
+    .from(agendamento)
     .insert([
       {
         dia: dia,

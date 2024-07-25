@@ -15,11 +15,9 @@ function Header() {
   useEffect(() => {
     async function checkUser() {
       try {
-        const { token, isLoading } = await checkLoggedIn();
-        setIsLogged(token);
-        console.log(isLogged);
-        console.log();
-        if (!token) throw new Error("Não foi possivel carregar as informações");
+        const { id, isLoading } = await checkLoggedIn();
+        setIsLogged(id);
+        if (!id) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
         console.error(error);
       }
@@ -41,7 +39,7 @@ function Header() {
       <div className="mr-10 flex mt-5 gap-4 items-center font-bold">
         {isLogged ? <Logout /> : <Login />}
 
-        <UserIcon isLogged={isLogged} />
+        <UserIcon userId={isLogged} />
       </div>
     </header>
   );
