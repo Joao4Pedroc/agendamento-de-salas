@@ -36,7 +36,13 @@ export default function UserIcon({ userId }: { userId: string | null }) {
                 <li>Configurações</li>
                 <li>Salas</li>
 
-                {user[0]?.admin === true ? <li>Agendamentos pendentes</li> : ""}
+                {user[0]?.admin === true ? (
+                  <li>
+                    <a href="/pendentes">Agendamentos pendentes</a>
+                  </li>
+                ) : (
+                  ""
+                )}
                 <li>
                   <Logout />
                 </li>
