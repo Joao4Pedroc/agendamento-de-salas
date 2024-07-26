@@ -5,9 +5,8 @@ import ButtonBack from "@/app/_components/ButtonBack";
 import Calendario from "@/app/_components/Calendario";
 import DatePickerForm from "@/app/_components/DatePickerForm";
 import Modal from "@/app/_components/Modal";
-import { checkLoggedIn } from "@/app/_Helper/checkLoggedIn";
+import useAdminId from "@/app/_Helper/getAdminId";
 import { getSalasNomesId } from "@/app/_services/apiSalas";
-import { getUserAdmin } from "@/app/_services/apiUser";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -16,36 +15,8 @@ function SalaId() {
   const [sala, setSalas] = useState<any>();
   const idUrl = Number(usePathname().slice(7));
 
-  const [admin, setAdmin] = useState<boolean>();
-  const [userId, setUserId] = useState<string | undefined | null>();
-
-  useEffect(() => {
-    async function checkUser() {
-      try {
-        const { id } = await checkLoggedIn();
-        setUserId(id);
-        if (!id) throw new Error("Não foi possivel carregar as informações");
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    checkUser();
-  }, []);
-
-  useEffect(() => {
-    async function checkUserId() {
-      try {
-        const user: any = await getUserAdmin({ userId });
-        setAdmin(user[0].admin);
-        if (!user) throw new Error("Não foi possivel carregar as informações");
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    checkUserId();
-  }, [userId]);
+  const { admin, userId } = useAdminId();
+  console.log(admin);
 
   useEffect(() => {
     async function fetchData() {

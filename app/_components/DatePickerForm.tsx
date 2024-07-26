@@ -1,7 +1,7 @@
 "use client";
 
 import { ptBR } from "date-fns/locale";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import formatDateTime from "../_Helper/formatTime";
@@ -18,7 +18,8 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario }: any) => {
   const idSala = Number(usePathname().slice(7));
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (date && startTime && endTime) {
       const {
         formattedDay: dia,
