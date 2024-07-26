@@ -31,6 +31,7 @@ function Salas() {
         <ul className="font-medium flex gap-4 " key={sala.id}>
           <li className="">
             <Image
+              className="rounded-lg"
               src={sala.imagem}
               height={250}
               width={250}
