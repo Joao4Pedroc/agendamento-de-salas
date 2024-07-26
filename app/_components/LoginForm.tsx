@@ -18,7 +18,6 @@ function LoginForm() {
     }
 
     const data = await login({ email, password });
-    console.log(data);
     if (data) {
       navigate();
     }

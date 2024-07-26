@@ -78,10 +78,12 @@ export default function Home() {
           ""
         )}
       </div>
-      <SalasDisponiveis
-        setSalaAtual={setSalaAtual}
-        setShowModal={setShowModal}
-      />
+      <div className="">
+        <SalasDisponiveis
+          setSalaAtual={setSalaAtual}
+          setShowModal={setShowModal}
+        />
+      </div>
     </div>
   );
 }

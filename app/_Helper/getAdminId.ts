@@ -5,6 +5,7 @@ import { getUserAdmin } from "../_services/apiUser";
 export default function useAdminId() {
   const [admin, setAdmin] = useState<boolean>();
   const [userId, setUserId] = useState<string | undefined | null>();
+  const [nome, setNome] = useState<string>();
 
   useEffect(() => {
     async function checkUser() {
@@ -25,6 +26,7 @@ export default function useAdminId() {
       try {
         const user: any = await getUserAdmin({ userId });
         setAdmin(user[0].admin);
+        setNome(user[0].nome);
         if (!user) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
         console.error(error);
@@ -34,5 +36,5 @@ export default function useAdminId() {
     checkUserId();
   }, [userId]);
 
-  return { admin, userId };
+  return { admin, userId, nome };
 }

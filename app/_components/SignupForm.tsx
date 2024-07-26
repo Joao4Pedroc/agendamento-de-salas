@@ -31,7 +31,6 @@ function SignupForm() {
     async function checkUser() {
       try {
         const { id, isLoading } = await checkLoggedIn();
-        console.log(id);
         if (!id) throw new Error("Não foi possivel carregar as informações");
         if (id) navigate();
       } catch (error) {

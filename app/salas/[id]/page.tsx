@@ -15,8 +15,7 @@ function SalaId() {
   const [sala, setSalas] = useState<any>();
   const idUrl = Number(usePathname().slice(7));
 
-  const { admin, userId } = useAdminId();
-  console.log(admin);
+  const { admin, userId, nome } = useAdminId();
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +39,12 @@ function SalaId() {
       <div className="pt-5 pl-[85%]">
         <Button onClick={setShowModal}>AGENDE UM HORARIO</Button>
         <Modal isVisible={showModal} setIsVisible={setShowModal}>
-          <DatePickerForm sala={sala} admin={admin} idUsuario={userId} />
+          <DatePickerForm
+            sala={sala}
+            admin={admin}
+            idUsuario={userId}
+            nome={nome}
+          />
         </Modal>
       </div>
     </div>

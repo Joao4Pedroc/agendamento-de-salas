@@ -31,13 +31,15 @@ export default function UserIcon({ userId }: { userId: string | null }) {
       </button>
       {userId
         ? isOpen && (
-            <div className="bg-gray-400 absolute top-10 flex flex-col items-start rounded-md p-2 ">
+            <div className="bg-gray-100 absolute top-10 flex flex-col items-start rounded-md p-2 shadow-md ">
               <ul className="text-center font-normal">
-                <li>Configurações</li>
-                <li>Salas</li>
+                <li className="border-b border-gray-500">Configurações</li>
+                <li className="border-b border-gray-500">
+                  <a href="/salas">Salas</a>
+                </li>
 
                 {user[0]?.admin === true ? (
-                  <li>
+                  <li className=" border-b border-gray-500">
                     <a href="/pendentes">Agendamentos pendentes</a>
                   </li>
                 ) : (
@@ -50,7 +52,7 @@ export default function UserIcon({ userId }: { userId: string | null }) {
             </div>
           )
         : isOpen && (
-            <div className="bg-gray-400 absolute top-10 flex flex-col items-start rounded-md p-2 ">
+            <div className="bg-gray-100 absolute top-10 flex flex-col items-start rounded-md p-2 shadow-md ">
               <ul className="text-center font-normal">
                 <li>
                   <Login />

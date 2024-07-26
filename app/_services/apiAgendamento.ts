@@ -30,6 +30,7 @@ export async function sendAgendamento({
   idUsuario,
   titulo,
   admin,
+  username,
 }: {
   dia: string;
   horarioEntrada: string;
@@ -38,6 +39,7 @@ export async function sendAgendamento({
   idUsuario: string;
   titulo: string;
   admin: boolean;
+  username: string;
 }) {
   const agendamento = admin ? "Agendamento" : "Agendamento_pendente";
 
@@ -49,8 +51,8 @@ export async function sendAgendamento({
         horarioEntrada: horarioEntrada,
         horarioSaida: horarioSaida,
         idSala: idSala,
-        idUsuario: idUsuario,
         titulo: titulo,
+        nomeUsuario: username,
       },
     ])
     .select();

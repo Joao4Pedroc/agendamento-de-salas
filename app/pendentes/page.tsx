@@ -60,15 +60,26 @@ function Salas() {
                 />
               </li>
               <div>
-                <li>Sala {sala[0].nome}</li>
+                <li>
+                  Sala <span className="font-bold">{sala[0].nome}</span>
+                </li>
 
                 <li className="">
-                  Horario entrada: {reformatTime(agendamento.horarioEntrada)}
+                  Horario entrada:
+                  <span className="font-bold">
+                    {reformatTime(agendamento.horarioEntrada)}
+                  </span>
                 </li>
                 <li>
-                  Horario entrada: {reformatTime(agendamento.horarioSaida)}
+                  Horario saida:
+                  <span className="font-bold">
+                    {reformatTime(agendamento.horarioSaida)}
+                  </span>
                 </li>
-                <li>Agenda-da por: {agendamento.nomeUsuario}</li>
+                <li>
+                  Agenda-da por:
+                  <span className="font-bold">{agendamento.nomeUsuario}</span>
+                </li>
                 <li className="text-blue-900 ">
                   <a href={`/salas/${sala[0].id}`}>Ver calendario da sala</a>
                 </li>
