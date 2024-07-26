@@ -1,8 +1,18 @@
-import { Agendamento } from "../_components/types";
 import supabase from "./supabase";
 
 export async function getAgendamento() {
   let { data, error } = await supabase.from("Agendamento").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Não foi possivel carregar os agendamentos.");
+  }
+
+  return data;
+}
+
+export async function getAgendamentoPendentes() {
+  let { data, error } = await supabase.from("Agendamento_pendente").select("*");
 
   if (error) {
     console.error(error);

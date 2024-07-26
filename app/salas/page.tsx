@@ -22,9 +22,6 @@ function Salas() {
     fetchData();
   }, []);
 
-  {
-    salas?.map((sala) => console.log(sala));
-  }
   return (
     <div className="grid grid-cols-3 gap-12 mt-10">
       {salas?.map((sala) => (
@@ -39,6 +36,7 @@ function Salas() {
             />
           </li>
           <div>
+            <li>Sala {sala.nome}</li>
             <li className="">Capacidade: {sala.capacidade} pessoas</li>
             <li>{sala.televisão ? "Televisão" : "Não possui televisão"}</li>
             <li>{sala.internet ? "Internet" : "Não possui internet"}</li>
