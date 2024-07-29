@@ -1,4 +1,4 @@
-export default function reformatTime(dateString: string): string {
+export default function reformatTime(dateString: string | Date): string {
   const date = new Date(dateString);
 
   const day = String(date.getDate()).padStart(2, "0");

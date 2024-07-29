@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getSalas } from "../_services/apiSalas";
-import { Sala } from "../_components/types";
+import { Agendamento, Sala } from "../_components/types";
 import Image from "next/image";
 import useAdminId from "../_Helper/getAdminId";
 import { getAgendamentoPendentes } from "../_services/apiAgendamento";
@@ -44,9 +44,12 @@ function Salas() {
 
   if (admin) {
     return (
-      <div className="grid grid-cols-3 gap-12 mt-10">
-        {agendamentos?.map((agendamento) => {
-          const sala = salas.filter((sala) => sala.id === agendamento.idSala);
+      <div className="grid grid-cols-3 gap-12 mt-10 sm:grid-cols-1 md:grid-cols-3">
+        {agendamentos?.map((agendamento: Agendamento) => {
+          console.log(agendamento);
+          const sala = salas.filter(
+            (sala: Sala) => sala.id === agendamento.idSala
+          );
 
           return (
             <ul className="font-medium flex gap-4 " key={agendamento.id}>
@@ -67,18 +70,22 @@ function Salas() {
                 <li className="">
                   Horario entrada:
                   <span className="font-bold">
-                    {reformatTime(agendamento.horarioEntrada)}
+                    {` ${reformatTime(agendamento.horarioEntrada)}`}
                   </span>
                 </li>
                 <li>
                   Horario saida:
                   <span className="font-bold">
-                    {reformatTime(agendamento.horarioSaida)}
+                    {` ${reformatTime(agendamento.horarioSaida)}`}
                   </span>
                 </li>
                 <li>
+                  Atividade:
+                  <span className="font-bold">{` ${agendamento.atividade}`}</span>
+                </li>
+                <li>
                   Agenda-da por:
-                  <span className="font-bold">{agendamento.nomeUsuario}</span>
+                  <span className="font-bold">{` ${agendamento.nomeUsuario}`}</span>
                 </li>
                 <li className="text-blue-900 ">
                   <a href={`/salas/${sala[0].id}`}>Ver calendario da sala</a>

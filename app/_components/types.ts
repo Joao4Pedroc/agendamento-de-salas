@@ -26,4 +26,6 @@ export interface Agendamento {
   idSala: number | string;
   idUsuario: number | string;
   titulo: string;
+  nomeUsuario: string;
+  atividade: string;
 }

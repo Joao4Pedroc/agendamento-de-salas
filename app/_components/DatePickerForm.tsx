@@ -1,7 +1,7 @@
 "use client";
 
 import { ptBR } from "date-fns/locale";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import formatDateTime from "../_Helper/formatTime";
@@ -14,7 +14,8 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
   const [date, setDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
-  const [userName, setUserName] = useState<string | undefined | null>();
+  const [userName, setUserName] = useState<string>();
+  const [atividade, setAtividade] = useState<string>();
 
   const idSala = Number(usePathname().slice(7));
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
@@ -23,9 +24,8 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
 
   const username = nome ? nome : userName;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (date && startTime && endTime) {
+  const handleSubmit = () => {
+    if (date && startTime && endTime && username) {
       const {
         formattedDay: dia,
         startDateTime: horarioEntrada,
@@ -40,6 +40,7 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
         titulo,
         admin,
         username,
+        atividade,
       });
 
       if (admin) alert("Horario agendado.");
@@ -111,7 +112,7 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
         </div>
         <div>
           {idUsuario ? (
-            <div>
+            <div className="mb-5">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Seu nome:
               </label>
@@ -122,8 +123,8 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
               ></input>
             </div>
           ) : (
-            <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <div className="mb-5">
+              <label className="block text-sm font-medium text-gray-900 dark:text-white">
                 Seu nome:
               </label>
               <input
@@ -133,6 +134,16 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
               ></input>
             </div>
           )}
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Atividade:
+            </label>
+            <input
+              onChange={(atividade) => setAtividade(atividade.target.value)}
+              value={atividade}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            ></input>
+          </div>
         </div>
       </div>
 
