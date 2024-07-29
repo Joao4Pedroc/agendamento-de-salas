@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Sala } from "./_components/types";
 import Image from "next/image";
 import ButtonLink from "./_components/ButtonLink";
+import Link from "next/link";
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -67,9 +68,12 @@ export default function Home() {
                     : "Não possui descrição"}
                 </li>
                 <li className="list-none mt-10">
-                  <ButtonLink href={`/salas/${salaAtual.id}`}>
+                  <Link
+                    className="text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700 block "
+                    href={`/salas/${salaAtual?.id}`}
+                  >
                     Visualizar disponibilidade
-                  </ButtonLink>
+                  </Link>
                 </li>
               </ul>
             </div>

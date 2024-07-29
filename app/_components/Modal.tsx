@@ -24,7 +24,7 @@ export default function Modal({
       id="wrapper"
       onClick={handleClose}
     >
-      <div className="min-w-[700px] min-h-[400px] bg-white p-2 rounded">
+      <div className="min-w-[44rem] min-h-[25rem] bg-white p-2 rounded md:min-w-[44rem] sm:min-w-[19rem] ">
         <button
           onClick={() => setIsVisible(false)}
           className="text-black text-4xl flex ml-[95%]"

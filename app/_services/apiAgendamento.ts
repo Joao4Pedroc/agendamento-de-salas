@@ -1,3 +1,4 @@
+import { Agendamento } from "../_components/types";
 import supabase from "./supabase";
 
 export async function getAgendamento() {
@@ -64,6 +65,47 @@ export async function sendAgendamento({
     console.error(error);
     throw new Error("Não foi possivel concluir o agendamento.");
   }
+
+  return data;
+}
+
+export async function deleteAgendamentoPendente(agendamento: Agendamento) {
+  console.log(agendamento.id);
+  const { data, error } = await supabase
+    .from("Agendamento_pendente")
+    .delete()
+    .eq("id", agendamento)
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Não foi possivel concluir o agendamento.");
+  }
+  console.log(data);
+}
+
+export async function confirmAgendamento(agendamentoPendente: Agendamento) {
+  const { data, error } = await supabase
+    .from("Agendamento")
+    .insert([
+      {
+        dia: agendamentoPendente.dia,
+        horarioEntrada: agendamentoPendente.horarioEntrada,
+        horarioSaida: agendamentoPendente.horarioSaida,
+        idSala: agendamentoPendente.idSala,
+        titulo: agendamentoPendente.titulo,
+        nomeUsuario: agendamentoPendente.nomeUsuario,
+        atividade: agendamentoPendente.atividade,
+      },
+    ])
+    .select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Não foi possivel concluir o agendamento.");
+  }
+
+  deleteAgendamentoPendente(agendamentoPendente);
 
   return data;
 }

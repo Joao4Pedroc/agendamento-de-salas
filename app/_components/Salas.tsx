@@ -26,7 +26,7 @@ function Salas({
           <li>Capacidade: {sala.capacidade} pessoas</li>
           <li>{sala.televisão ? "Televisão" : "Não possui televisão"}</li>
           <li>{sala.internet ? "Internet" : "Não possui internet"}</li>
-          <li className="text-blue-900 ">
+          <li className="text-blue-900 hover:text-blue-600 ">
             <button
               onClick={() => {
                 setSalaAtual(sala);

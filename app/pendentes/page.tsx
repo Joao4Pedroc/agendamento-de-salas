@@ -5,7 +5,10 @@ import { getSalas } from "../_services/apiSalas";
 import { Agendamento, Sala } from "../_components/types";
 import Image from "next/image";
 import useAdminId from "../_Helper/getAdminId";
-import { getAgendamentoPendentes } from "../_services/apiAgendamento";
+import {
+  confirmAgendamento,
+  getAgendamentoPendentes,
+} from "../_services/apiAgendamento";
 import reformatTime from "../_Helper/reformatTime";
 
 function Salas() {
@@ -13,6 +16,29 @@ function Salas() {
   const [agendamentos, setAgendamentos] = useState<any>();
 
   const { admin, userId } = useAdminId();
+
+  async function handleSubmit({ agendamento }: { agendamento: Agendamento }) {
+    console.log(
+      agendamento.dia,
+      agendamento.horarioEntrada,
+      agendamento.horarioSaida,
+      agendamento.atividade,
+      agendamento.idSala
+    );
+    if (
+      agendamento.dia &&
+      agendamento.horarioEntrada &&
+      agendamento.horarioSaida &&
+      agendamento.atividade &&
+      agendamento.idSala
+    ) {
+      const data = await confirmAgendamento(agendamento);
+      if (data) {
+        alert("Agendamento confirmado");
+        location.reload();
+      }
+    } else alert("Agendamento incompleto");
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -57,8 +83,8 @@ function Salas() {
                 <Image
                   className="rounded-lg"
                   src={sala[0].imagem}
-                  height={250}
-                  width={250}
+                  height={300}
+                  width={300}
                   alt={`Imagem da sala ${sala[0].nome}`}
                 />
               </li>
@@ -90,6 +116,14 @@ function Salas() {
                 <li className="text-blue-900 ">
                   <a href={`/salas/${sala[0].id}`}>Ver calendario da sala</a>
                 </li>
+                <li>
+                  <button
+                    onClick={() => handleSubmit({ agendamento })}
+                    className="text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
+                  >
+                    CONFIRMAR AGENDAMENTO
+                  </button>
+                </li>
               </div>
             </ul>
           );
@@ -100,7 +134,10 @@ function Salas() {
     return (
       <div>
         Você precisa ser um admin para ver essa pagina.
-        <a href="/login">Faça seu login.</a>
+        <a href="/login" className="text-blue-900 hover:text-blue-600">
+          {" "}
+          Faça seu login.
+        </a>
       </div>
     );
 }
