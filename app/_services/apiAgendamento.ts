@@ -28,7 +28,6 @@ export async function sendAgendamento({
   horarioEntrada,
   horarioSaida,
   idSala,
-  idUsuario,
   titulo,
   admin,
   username,
@@ -38,7 +37,6 @@ export async function sendAgendamento({
   horarioEntrada: string;
   horarioSaida: string;
   idSala: number;
-  idUsuario: string;
   titulo: string;
   admin: boolean;
   username: string;

@@ -3,7 +3,7 @@ import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 import { navigate } from "../_Helper/navigate";
 
 export default async function sigup() {
-  const { token } = await checkLoggedIn();
+  const { token }: any = await checkLoggedIn();
 
   if (token) navigate();
   return (

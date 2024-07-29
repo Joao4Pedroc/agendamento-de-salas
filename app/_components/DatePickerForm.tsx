@@ -1,21 +1,32 @@
 "use client";
 
 import { ptBR } from "date-fns/locale";
-import React, { use, useEffect, useState } from "react";
+import React, { useState } from "react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import formatDateTime from "../_Helper/formatTime";
 import { sendAgendamento } from "../_services/apiAgendamento";
 import { usePathname } from "next/navigation";
+import { Sala } from "./types";
 
 registerLocale("ptBR", ptBR);
 
-const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
+function DatePickerForm({
+  sala,
+  admin,
+  idUsuario,
+  nome,
+}: {
+  sala: Sala[];
+  admin: boolean | any;
+  idUsuario: string | undefined | null;
+  nome: string | undefined;
+}) {
   const [date, setDate] = useState<Date | null>(null);
   const [startTime, setStartTime] = useState<Date | null>(null);
   const [endTime, setEndTime] = useState<Date | null>(null);
   const [userName, setUserName] = useState<string>();
-  const [atividade, setAtividade] = useState<string>();
+  const [atividade, setAtividade] = useState<string>("");
 
   const idSala = Number(usePathname().slice(7));
   const titulo = `Sala ${idSala} agenda-da por usuario ${idUsuario}`;
@@ -36,7 +47,6 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
         horarioEntrada,
         horarioSaida,
         idSala,
-        idUsuario,
         titulo,
         admin,
         username,
@@ -155,6 +165,6 @@ const DatePickerForm: React.FC = ({ sala, admin, idUsuario, nome }: any) => {
       </button>
     </form>
   );
-};
+}
 
 export default DatePickerForm;

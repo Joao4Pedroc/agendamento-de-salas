@@ -5,7 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/pt-br";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Agendamento } from "@/app/_components/types";
+import { Agendamento, Sala } from "@/app/_components/types";
 import { getAgendamento } from "../_services/apiAgendamento";
 import { usePathname } from "next/navigation";
 import { getUserAdmin } from "../_services/apiUser";
@@ -13,8 +13,8 @@ import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 
 interface Event {
   id: number;
-  start: Date;
-  end: Date;
+  start: Date | string;
+  end: Date | string;
   idSalaAgenda: number;
   idUsuarioAgenda: number;
   title: string;
@@ -51,16 +51,14 @@ function Calendario() {
       try {
         const data = await getAgendamento();
         if (!data) throw new Error("Não foi possivel carregar as informações");
-        const transformedData: Event[] = data.map(
-          (agendamento: Agendamento) => ({
-            id: agendamento.id,
-            idSalaAgenda: agendamento.idSala,
-            idUsuarioAgenda: agendamento.idUsuario,
-            start: moment(agendamento.horarioEntrada).toDate(),
-            end: moment(agendamento.horarioSaida).toDate(),
-            title: `Sala ${agendamento.idSala}`,
-          })
-        );
+        const transformedData: any[] = data.map((agendamento: Agendamento) => ({
+          id: agendamento.id,
+          idSalaAgenda: agendamento.idSala,
+          idUsuarioAgenda: agendamento.idUsuario,
+          start: moment(agendamento.horarioEntrada).toDate(),
+          end: moment(agendamento.horarioSaida).toDate(),
+          title: `Sala ${agendamento.idSala}`,
+        }));
 
         setEvents(
           transformedData.filter((sala) => sala.idSalaAgenda === idUrl)

@@ -3,7 +3,7 @@ import { checkLoggedIn } from "./checkLoggedIn";
 import { getUserAdmin } from "../_services/apiUser";
 
 export default function useAdminId() {
-  const [admin, setAdmin] = useState<boolean>();
+  const [admin, setAdmin] = useState<boolean | undefined>();
   const [userId, setUserId] = useState<string | undefined | null>();
   const [nome, setNome] = useState<string>();
 
@@ -25,7 +25,9 @@ export default function useAdminId() {
     async function checkUserId() {
       try {
         const user: any = await getUserAdmin({ userId });
-        setAdmin(user[0].admin);
+        if (user[0].admin) {
+          setAdmin(true);
+        }
         setNome(user[0].nome);
         if (!user) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {

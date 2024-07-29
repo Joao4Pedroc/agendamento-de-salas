@@ -6,7 +6,11 @@ import Logout from "./Logout";
 import Login from "./Login";
 import { getUserAdmin } from "../_services/apiUser";
 
-export default function UserIcon({ userId }: { userId: string | null }) {
+export default function UserIcon({
+  userId,
+}: {
+  userId: string | undefined | null;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [user, setUser] = useState<any>();
 
