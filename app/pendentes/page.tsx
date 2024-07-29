@@ -69,6 +69,13 @@ function Salas() {
   }, []);
 
   if (admin) {
+    if (agendamentos.length === 0) {
+      return (
+        <div className="text-center text-3xl mt-[20%] font-bold">
+          Não existem agendamentos pendentes!!
+        </div>
+      );
+    }
     return (
       <div className="grid grid-cols-3 gap-12 mt-10 sm:grid-cols-1 md:grid-cols-3">
         {agendamentos?.map((agendamento: Agendamento) => {
