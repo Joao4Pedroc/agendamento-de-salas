@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div>
+    <h1>Agendamento de salas FEPECS</h1>
+    <strong>Documentação do site de agendamento de salas FEPECS</strong><br>
+    <strong>Feito e mantido por João Pedro de Castro Silva.</strong>
+</div>
 
-## Getting Started
+## Agendamento de salas FEPECS, oque É?
 
-First, run the development server:
+-- projeto feito com [NEXT.JS](https://nextjs.org/) usando [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) --
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Como começar
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para comecar com o projeto crie um arquivo .env.local e ajuste as variaveis necessarias:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+NEXT_PUBLIC_SUPABASE_ANON_KEY
+sua chave anonima do supabase para conectar o aplicativo com o dados
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+depois baixe as dependencias usando npm install
 
-## Learn More
+Depois inicie o servidor de desenvolvimento com npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+## bibliotecas usadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+supabase: usado para o back-end
+documentação [supabase](https://supabase.com/):
+https://supabase.com/docs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+react-responsive-carousel: usado para mostrar as fotos das salas na pagina inicial
+documentação react-responsive-carousel:
+https://react-responsive-carousel.js.org/
+https://www.npmjs.com/package/react-responsive-carousel
 
-## Deploy on Vercel
+react-datepicker: usado para selecionar a data no formulario de agendamento das salas
+documentação react-datepicker:
+https://www.npmjs.com/package/react-datepicker
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+react-big-calendar: usado para mostrar o calendario com os eventos de agendamento das salas
+documentação react-big-calendar:
+https://www.npmjs.com/package/react-big-calendar
