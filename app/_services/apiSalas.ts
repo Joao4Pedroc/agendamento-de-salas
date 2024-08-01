@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import supabase from "./supabase";
 
 export async function getSalas() {
@@ -17,16 +16,6 @@ export async function getSalasNomesId() {
 
   if (error) {
     console.error(error);
-    toast.error("Não foi possivel carregar as salas, tente novamente.", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
     throw new Error("Não foi possivel carregar as salas.");
   }
 

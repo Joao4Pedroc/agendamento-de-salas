@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { getSalas } from "../_services/apiSalas";
 import { Sala } from "../_components/types";
 import Image from "next/image";
-import { toast } from "react-toastify";
 
 function Salas() {
   const [salas, setSalas] = useState<Sala[]>();
@@ -16,16 +15,6 @@ function Salas() {
         if (!data) throw new Error("Não foi possivel carregar as informações");
         setSalas(data);
       } catch (error) {
-        toast.error("Não foi possivel carregar as informações", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
         console.error(error);
       }
     }

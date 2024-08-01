@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import { Agendamento, Sala } from "@/app/_components/types";
 import { getAgendamento } from "../_services/apiAgendamento";
 import { usePathname } from "next/navigation";
-import { toast } from "react-toastify";
+import { getUserAdmin } from "../_services/apiUser";
+import { checkLoggedIn } from "../_Helper/checkLoggedIn";
 
 interface Event {
   id: number;
@@ -63,16 +64,6 @@ function Calendario() {
           transformedData.filter((sala) => sala.idSalaAgenda === idUrl)
         );
       } catch (error) {
-        toast.error("Ocorreu um erro", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
         console.error(error);
       }
     }

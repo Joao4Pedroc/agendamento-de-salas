@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkLoggedIn } from "./checkLoggedIn";
 import { getUserAdmin } from "../_services/apiUser";
-import { toast } from "react-toastify";
 
 export default function useAdminId() {
   const [admin, setAdmin] = useState<boolean | undefined>();
@@ -15,16 +14,6 @@ export default function useAdminId() {
         setUserId(id);
         if (!id) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
-        toast.error("Não foi possivel carregar as informações.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
         console.error(error);
       }
     }
@@ -42,16 +31,6 @@ export default function useAdminId() {
         setNome(user[0].nome);
         if (!user) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
-        toast.error("Não foi possivel carregar as informações.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
         console.error(error);
       }
     }

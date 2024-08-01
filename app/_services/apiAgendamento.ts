@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import { Agendamento } from "../_components/types";
 import supabase from "./supabase";
 
@@ -101,16 +100,6 @@ export async function confirmAgendamento(agendamentoPendente: Agendamento) {
 
   if (error) {
     console.error(error);
-    toast.error("Ocorreu um erro no agendamento, tente novamente.", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
     throw new Error("Não foi possivel concluir o agendamento.");
   }
 

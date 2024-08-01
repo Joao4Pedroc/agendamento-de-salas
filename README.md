@@ -6,7 +6,7 @@
 
 ## Agendamento de salas FEPECS, oque É?
 
--- projeto feito com [next.js](https://nextjs.org/) usando [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) --
+-- projeto feito com [NEXT.JS](https://nextjs.org/) usando [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) --
 
 ## Como começar
 
@@ -26,8 +26,8 @@ documentação [supabase](https://supabase.com/):
 https://supabase.com/docs
 
 react-responsive-carousel: usado para mostrar as fotos das salas na pagina inicial
-documentação react-responsive-carousel:<br>
-https://react-responsive-carousel.js.org/<br>
+documentação react-responsive-carousel:
+https://react-responsive-carousel.js.org/
 https://www.npmjs.com/package/react-responsive-carousel
 
 react-datepicker: usado para selecionar a data no formulario de agendamento das salas

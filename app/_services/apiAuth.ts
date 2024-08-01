@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import supabase from "./supabase";
 
 export async function login({
@@ -14,16 +13,7 @@ export async function login({
   });
 
   if (error) {
-    toast.error("Ocorreu um erro no login, tente novamente.", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    alert(error.message);
     throw new Error(error.message);
   }
 
@@ -47,16 +37,7 @@ export async function signUp({
   });
 
   if (error) {
-    toast.error("Ocorreu um erro na criacão da sua conta, tente novamente.", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    alert(error.message);
     throw new Error(error.message);
   }
 
@@ -68,16 +49,7 @@ export async function signUp({
 
   // checando se ocorreu um erro, talvez ocorra um problema se criar o usuario na sessão Auth e nao criar na sessão Usuarios
   if (insertError) {
-    toast.error(insertError.message, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    alert(insertError.message);
     throw new Error(insertError.message);
   }
 

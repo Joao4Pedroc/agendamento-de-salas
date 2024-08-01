@@ -6,7 +6,6 @@ import SearchBar from "./SearchBar";
 import { getSalas } from "../_services/apiSalas";
 import { Sala } from "./types";
 import { HiCog8Tooth } from "react-icons/hi2";
-import { toast } from "react-toastify";
 
 function SalasDisponiveis({
   setSalaAtual,
@@ -25,16 +24,6 @@ function SalasDisponiveis({
         if (!data) throw new Error("Não foi possivel carregar as informações");
         setSalas(data);
       } catch (error) {
-        toast.error("Ocorreu um erro no agendamento, tente novamente.", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
         console.error(error);
       }
     }
