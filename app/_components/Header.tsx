@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Logout from "./Logout";
 import Login from "./Login";
 import UserIcon from "./UserIcon";
+import { toast } from "react-toastify";
 
 function Header() {
   const [isLogged, setIsLogged] = useState<string | null>();
@@ -19,6 +20,16 @@ function Header() {
         setIsLogged(id);
         if (!id) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
+        toast.error("Ocorreu um erro no agendamento, tente novamente.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         console.error(error);
       }
     }

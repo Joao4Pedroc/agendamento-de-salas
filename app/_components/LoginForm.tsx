@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { login } from "../_services/apiAuth";
 import { navigate } from "../_Helper/navigate";
 import { checkLoggedIn } from "../_Helper/checkLoggedIn";
+import { toast } from "react-toastify";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -30,6 +31,16 @@ function LoginForm() {
         if (!id) throw new Error("Não foi possivel carregar as informações");
         if (id) navigate();
       } catch (error) {
+        toast.error("Ocorreu um erro.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         console.error(error);
       }
     }

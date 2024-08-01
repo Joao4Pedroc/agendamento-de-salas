@@ -5,6 +5,7 @@ import { Sala } from "./types";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import { HiMiniArrowLeftCircle, HiMiniArrowRightCircle } from "react-icons/hi2";
+import { toast } from "react-toastify";
 
 export default function CarouselSalas({
   isVisible,
@@ -26,6 +27,16 @@ export default function CarouselSalas({
         if (!data) throw new Error("Não foi possivel carregar as informações");
         setSalas(data);
       } catch (error) {
+        toast.error("Ocorreu um erro.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         console.error(error);
       }
     }

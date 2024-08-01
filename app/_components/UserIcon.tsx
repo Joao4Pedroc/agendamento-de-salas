@@ -5,6 +5,7 @@ import { HiMiniUser } from "react-icons/hi2";
 import Logout from "./Logout";
 import Login from "./Login";
 import { getUserAdmin } from "../_services/apiUser";
+import { toast } from "react-toastify";
 
 export default function UserIcon({
   userId,
@@ -21,6 +22,16 @@ export default function UserIcon({
         setUser(user);
         if (!user) throw new Error("Não foi possivel carregar as informações");
       } catch (error) {
+        toast.error("Ocorreu um erro.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         console.error(error);
       }
     }
