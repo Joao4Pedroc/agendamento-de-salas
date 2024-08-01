@@ -36,7 +36,7 @@ function DatePickerForm({
   const username = nome ? nome : userName;
 
   const handleSubmit = () => {
-    if (date && startTime && endTime && username) {
+    if (date && startTime && endTime && username && atividade) {
       const {
         formattedDay: dia,
         startDateTime: horarioEntrada,
