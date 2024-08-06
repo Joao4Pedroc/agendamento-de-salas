@@ -58,8 +58,11 @@ export default function UserIcon({
         : isOpen && (
             <div className="bg-gray-100 absolute top-10 flex flex-col items-start rounded-md p-2 shadow-md ">
               <ul className="text-center font-normal">
-                <li>
+                <li className="border-b border-gray-500">
                   <Login />
+                </li>
+                <li>
+                  <a href="/salas">Salas</a>
                 </li>
               </ul>
             </div>

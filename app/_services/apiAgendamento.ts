@@ -68,11 +68,11 @@ export async function sendAgendamento({
 }
 
 export async function deleteAgendamentoPendente(agendamento: Agendamento) {
-  console.log(agendamento.id);
+  // se o agendamento.id for igual ao id, vai deletar o agendamento
   const { data, error } = await supabase
     .from("Agendamento_pendente")
     .delete()
-    .eq("id", agendamento)
+    .eq("id", agendamento.id)
     .select();
 
   if (error) {

@@ -10,21 +10,16 @@ import {
   getAgendamentoPendentes,
 } from "../_services/apiAgendamento";
 import reformatTime from "../_Helper/reformatTime";
+import Modal from "../_components/Modal";
 
 function Salas() {
   const [salas, setSalas] = useState<any>();
+  const [modal, setModal] = useState<boolean>(false);
   const [agendamentos, setAgendamentos] = useState<any>();
 
   const { admin, userId } = useAdminId();
 
   async function handleSubmit({ agendamento }: { agendamento: Agendamento }) {
-    console.log(
-      agendamento.dia,
-      agendamento.horarioEntrada,
-      agendamento.horarioSaida,
-      agendamento.atividade,
-      agendamento.idSala
-    );
     if (
       agendamento.dia &&
       agendamento.horarioEntrada &&
@@ -125,11 +120,30 @@ function Salas() {
                 </li>
                 <li>
                   <button
-                    onClick={() => handleSubmit({ agendamento })}
+                    onClick={() => setModal(!modal)}
                     className="text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
                   >
                     CONFIRMAR AGENDAMENTO
                   </button>
+                  <Modal isVisible={modal} setIsVisible={setModal}>
+                    <div className="flex flex-col items-center ">
+                      <div className="">
+                        <div className="text-center text-3xl mb-4">
+                          CONFIRMAR AGENDAMENTO
+                        </div>
+                        <span>
+                          confimar esse agendamento ira transforma-lo de um
+                          agendamento pendente, para um agendamento confirmado.
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => handleSubmit({ agendamento })}
+                        className=" mt-20 text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
+                      >
+                        CONFIRMAR AGENDAMENTO
+                      </button>
+                    </div>
+                  </Modal>
                 </li>
               </div>
             </ul>
