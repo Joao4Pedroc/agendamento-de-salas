@@ -32,6 +32,7 @@ function Salas() {
       const data = await confirmAgendamento(agendamento);
       if (data) {
         alert("Agendamento confirmado");
+        location.reload();
       }
     } else alert("Agendamento incompleto");
   }
@@ -41,6 +42,7 @@ function Salas() {
       const data = await deleteAgendamentoPendente(agendamento);
       if (data) {
         alert("Agendamento deletado");
+        location.reload();
       }
     } else alert("Agendamento incompleto");
   }
