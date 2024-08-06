@@ -34,12 +34,7 @@ function SalasDisponiveis({
   return (
     <div className="border-solid border-gray-400 border-2 p-4 rounded-xl mt-8 pb-[5%]">
       <div className="flex">
-        <div className="w-full">
-          <SearchBar />
-        </div>
-        <button className="px-4 pb-3 text-[1.2rem]">
-          <HiCog8Tooth />
-        </button>
+        <div className="w-full"></div>
       </div>
       <span className="font-bold">Salas disponiveis: </span>
       <div>
