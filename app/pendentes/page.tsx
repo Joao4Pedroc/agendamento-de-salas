@@ -7,6 +7,7 @@ import Image from "next/image";
 import useAdminId from "../_Helper/getAdminId";
 import {
   confirmAgendamento,
+  deleteAgendamentoPendente,
   getAgendamentoPendentes,
 } from "../_services/apiAgendamento";
 import reformatTime from "../_Helper/reformatTime";
@@ -14,7 +15,8 @@ import Modal from "../_components/Modal";
 
 function Salas() {
   const [salas, setSalas] = useState<any>();
-  const [modal, setModal] = useState<boolean>(false);
+  const [confirmModal, setConfirmModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [agendamentos, setAgendamentos] = useState<any>();
 
   const { admin, userId } = useAdminId();
@@ -30,7 +32,15 @@ function Salas() {
       const data = await confirmAgendamento(agendamento);
       if (data) {
         alert("Agendamento confirmado");
-        location.reload();
+      }
+    } else alert("Agendamento incompleto");
+  }
+
+  async function handleDelete({ agendamento }: { agendamento: Agendamento }) {
+    if (agendamento.id) {
+      const data = await deleteAgendamentoPendente(agendamento);
+      if (data) {
+        alert("Agendamento deletado");
       }
     } else alert("Agendamento incompleto");
   }
@@ -74,7 +84,6 @@ function Salas() {
     return (
       <div className="grid grid-cols-3 gap-12 mt-10 sm:grid-cols-1 md:grid-cols-3">
         {agendamentos?.map((agendamento: Agendamento) => {
-          console.log(agendamento);
           const sala = salas.filter(
             (sala: Sala) => sala.id === agendamento.idSala
           );
@@ -91,6 +100,30 @@ function Salas() {
                 />
               </li>
               <div>
+                <button
+                  onClick={() => setDeleteModal(!deleteModal)}
+                  className="text-black  bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 w-full dark:bg-red-500 dark:hover:bg-red-600 focus:outline-none dark:focus:ring-red-700"
+                >
+                  DELETAR AGENDAMENTO
+                </button>
+                <Modal isVisible={deleteModal} setIsVisible={setDeleteModal}>
+                  <div className="flex flex-col items-center ">
+                    <div className="">
+                      <div className="text-center text-3xl mb-4">
+                        DELETAR AGENDAMENTO
+                      </div>
+                      <span>
+                        deletar esse agendamento ira exclui-lo pernamentemente.
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => handleDelete({ agendamento })}
+                      className=" mt-20 text-black  bg-red-400 hover:bg-red-500 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-500 dark:hover:bg-red-600 focus:outline-none dark:focus:ring-red-700"
+                    >
+                      DELETAR AGENDAMENTO
+                    </button>
+                  </div>
+                </Modal>
                 <li>
                   Sala <span className="font-bold">{sala[0].nome}</span>
                 </li>
@@ -120,12 +153,15 @@ function Salas() {
                 </li>
                 <li>
                   <button
-                    onClick={() => setModal(!modal)}
-                    className="text-black  bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
+                    onClick={() => setConfirmModal(!confirmModal)}
+                    className="text-black  bg-amber-400 hover:bg-amber-500 w-full focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-amber-500 dark:hover:bg-amber-600 focus:outline-none dark:focus:ring-amber-700"
                   >
                     CONFIRMAR AGENDAMENTO
                   </button>
-                  <Modal isVisible={modal} setIsVisible={setModal}>
+                  <Modal
+                    isVisible={confirmModal}
+                    setIsVisible={setConfirmModal}
+                  >
                     <div className="flex flex-col items-center ">
                       <div className="">
                         <div className="text-center text-3xl mb-4">

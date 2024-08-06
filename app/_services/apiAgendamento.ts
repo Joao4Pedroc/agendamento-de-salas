@@ -79,7 +79,7 @@ export async function deleteAgendamentoPendente(agendamento: Agendamento) {
     console.error(error);
     throw new Error("Não foi possivel concluir o agendamento.");
   }
-  console.log(data);
+  return "Agendamento deletado";
 }
 
 export async function confirmAgendamento(agendamentoPendente: Agendamento) {
